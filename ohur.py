@@ -9,13 +9,21 @@ reader = csv.reader(lines)
 header = next(reader)
 #print(header)
 
-for index, column_title in enumerate(header):
-    print(f"{index} {column_title}, ", end= " ")
-print()
+#for index, column_title in enumerate(header):
+    #print(f"{index} {column_title}, ", end= " ")
+#print()
 
 dates = []
-ur_rate = []
+ur_rates = []
 
 for row in reader:
-    rates = int(row[1])
-    ur_rate.append(rates)
+    rates = float(row[1])
+    ur_rates.append(rates)
+
+plt.style.use('dark_background')
+figure, graph = plt.subplots()
+
+graph.plot(ur_rates)
+graph.set_title("Unemployment Rate by Month(OH) 1976-2022", fontsize=20)
+
+plt.show()
